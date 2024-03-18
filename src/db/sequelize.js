@@ -30,7 +30,7 @@ const sequelize = new Sequelize('leocraft', 'root', '', {
           creationDate: craft.creation_date,
           price: craft.price,
           image: craft.image,
-          shortescription: craft.shortDescription,
+          shortDescription: craft.shortDescription,
           description: craft.description,
           technique: craft.technique,
           signature: craft.signature,

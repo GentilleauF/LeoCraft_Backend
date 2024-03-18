@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
 
     image: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       // validate: {
       //   isUrl: { msg: "Veuillez renseigner une URL valide" },
       //   notNull: { msg: "Veuillez renseigner une URL" },
@@ -64,12 +64,12 @@ module.exports = (sequelize, DataTypes) => {
 
     signature: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
 
     isAvailable: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: true
   }
   });
 };
