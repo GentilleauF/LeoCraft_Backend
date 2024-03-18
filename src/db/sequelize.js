@@ -42,5 +42,5 @@ const sequelize = new Sequelize('leocraft', 'root', '', {
   }
 
   module.exports = {
-    initDb
+    initDb, Craft
   }

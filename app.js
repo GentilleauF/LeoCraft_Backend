@@ -6,8 +6,14 @@ const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
 
+const cors = require("cors");
+
+var corsOptions = {
+  origin: "http://localhost:3001"
+};
 
 app
+  .use(cors(corsOptions))
   .use(morgan("dev"))
   .use(bodyParser.json());
 
@@ -20,5 +26,5 @@ app
 //     res.status(404).json({message})
 // })
 
-app.get("/", (req, res) => res.send("Coucou"));
+require("./src/routes/craft.routes")(app)
 app.listen(port, () => console.log(`Nous sommes sur le port ${port}`));
