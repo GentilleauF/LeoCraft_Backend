@@ -26,5 +26,6 @@ app
 //     res.status(404).json({message})
 // })
 
-require("./src/routes/craft.routes")(app)
+//require("./src/routes/craft.routes")(app)
+require("./src/routes/user.routes")(app)
 app.listen(port, () => console.log(`Nous sommes sur le port ${port}`));

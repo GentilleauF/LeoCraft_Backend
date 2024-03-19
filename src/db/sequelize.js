@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize')
 const CraftModel = require('../models/craftModel')
+const UserModel = require('../models/userModel')
 const crafts = require('./dataFixtureCrafts')
 
 
@@ -22,6 +23,9 @@ const sequelize = new Sequelize('leocraft', 'root', '', {
 
   //Initialize the Database to put data
   const Craft = CraftModel(sequelize, DataTypes);
+  const User = UserModel(sequelize, DataTypes);
+
+
   const initDb = () => {
     return sequelize.sync({force : true}).then(_ => {
       crafts.map(craft => {
@@ -36,11 +40,12 @@ const sequelize = new Sequelize('leocraft', 'root', '', {
           signature: craft.signature,
           isAvailable: craft.isAvailable
         })
-      })
+      }),
+      
       console.log('La base de donnée a bien été initialisée !')
     })
   }
 
   module.exports = {
-    initDb, Craft
+    initDb, Craft, User
   }

@@ -1,4 +1,4 @@
-const { Error} = require("sequelize");
+const { Error } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define("Craft", {

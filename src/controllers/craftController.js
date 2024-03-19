@@ -1,7 +1,9 @@
 const db = require("../db/sequelize");
 const Craft = db.Craft;
+
+
 // CREATE a craft
-exports.create = (req, res) => {
+exports.createCraft = (req, res) => {
   // Validate request
   if (!req.body.title) {
     res.status(400).send({ message: "Le titre ne peut etre vide can not be empty!" });

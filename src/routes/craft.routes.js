@@ -3,7 +3,7 @@ module.exports = (app) => {
   var router = require("express").Router();
 
   // Create a new craft
-  router.post("/", craft.create);
+  router.post("/", craft.createCraft);
 
   // Retrieve all Crafts
   router.get("/", craft.findAll);
