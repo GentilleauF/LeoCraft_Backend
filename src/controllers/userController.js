@@ -1,5 +1,6 @@
 const db = require("../db/sequelize");
 const User = db.User;
+const bcrypt = require('bcrypt');
 
 
 exports.createUser = (req, res) => {
@@ -15,6 +16,18 @@ exports.createUser = (req, res) => {
       firstname: req.body.firstname,
 
     };
+
+      // Hachage du mot de passe avec bcrypt
+  bcrypt.hash(req.body.password, 10, (err, hash) => {
+    if (err) {
+      // Gestion de l'erreur de hachage
+      console.error(err);
+      return res.status(500).send({ message: "Erreur lors du hachage du mot de passe" });
+  }
+
+    // Remplacer le mot de passe en clair par le hash
+    user.password = hash;
+
     // Save User in the database
     User.create(user)
       .then((data) => {
@@ -26,5 +39,7 @@ exports.createUser = (req, res) => {
           message:
             err.message || "Une erreur c'est insérée lors de la créatyion de l'user",
         });
-      });
+      }); 
+    
+    })
   };
