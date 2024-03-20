@@ -1,7 +1,8 @@
-const { Sequelize, DataTypes } = require('sequelize')
-const CraftModel = require('../models/craftModel')
-const UserModel = require('../models/userModel')
-const crafts = require('./dataFixtureCrafts')
+const { Sequelize, DataTypes } = require('sequelize');
+const CraftModel = require('../models/craftModel');
+const UserModel = require('../models/userModel');
+const crafts = require('./dataFixtureCrafts');
+const bcrypt = require('bcrypt');
 
 
 //Connect to the DB
@@ -41,6 +42,15 @@ const sequelize = new Sequelize('leocraft', 'root', '', {
           isAvailable: craft.isAvailable
         })
       }),
+
+      bcrypt.hash('azerty', 10)
+      .then(hash => {
+          User.create({
+        email : "admin@gmail.com",
+        password : hash
+      })
+      })
+    
       
       console.log('La base de donnée a bien été initialisée !')
     })

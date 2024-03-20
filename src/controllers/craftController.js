@@ -1,4 +1,5 @@
 const db = require("../db/sequelize");
+const auth = require("../controllers/auth")
 const Craft = db.Craft;
 
 
@@ -26,6 +27,7 @@ exports.createCraft = (req, res) => {
       res.send(data);
     })
     .catch((err) => {
+      console.log(err);
         console.log(err);
       res.status(500).send({
         message:

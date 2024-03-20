@@ -1,9 +1,11 @@
+const auth = require("../controllers/auth");
+
 module.exports = (app) => {
   const craft = require("../controllers/craftController");
   var router = require("express").Router();
 
   // Create a new craft
-  router.post("/", craft.createCraft);
+  router.post("/", auth, craft.createCraft);
 
   // Retrieve all Crafts
   router.get("/", craft.findAll);
